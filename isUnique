@@ -1,0 +1,10 @@
+auto isUnique( const std::string& input ) noexcept( true ) -> bool {
+    std::array<bool, 128> charset{};
+    const char zero { '0' };
+    for( auto const &c : input ) {
+        if(charset[c - zero])
+            return false;
+        charset[c - zero] = true;
+    }
+    return true;
+}
