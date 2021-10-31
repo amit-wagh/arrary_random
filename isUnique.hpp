@@ -11,7 +11,7 @@ auto isUnique( std::string const & input ) noexcept( true ) -> bool {
 
 //const auto MIN_INT = std::numeric_limits<int>::min();
 
-auto difference(std::vector<int> const & input) -> int {
+auto difference( std::vector<int> const & input ) -> int {
     const auto [ min, max ] = std::minmax_element( std::cbegin( input ), std::cend( input ) );
     return ( *max - *min );
 }
