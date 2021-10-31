@@ -1,0 +1,16 @@
+
+ Algorithms from numeric space
+ PreC++11
+    1. accumulate
+    2. partial_sum
+    3. adjacent_difference
+    4. inner_product
+ C++11
+    1. iota
+ C++17
+    1. reduce
+    2. inclusive_scan
+    3. exclusive_scan
+    4. transform_exclusive_scan
+    5. transform_inclusive_scan
+    6. transform_reduce
