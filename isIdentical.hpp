@@ -80,10 +80,9 @@ auto main( [[ maybe_unused ]] int   argc,
     root2->right->left = new Node(3);
     root2->right->right = new Node(4);
 
-    using std::cout;
-    using std::boolalpha;
-
     cout << boolalpha << isIdenticalRecursive( root1, root2 ) << '\n';
     cout << boolalpha << isIdenticalIterative( root1, root2 ) << '\n';
+    
+    
     return EXIT_SUCCESS;
 }
