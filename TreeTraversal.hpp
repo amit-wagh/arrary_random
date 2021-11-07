@@ -106,3 +106,79 @@ public:
         return result;
     }
 };
+
+class Solution {
+	using ReturnType = std::vector<int>;
+	public:
+	  auto inorderTraversal( TreeNode* root ) const -> ReturnType {
+			ReturnType result {};
+			if( root == nullptr ) {
+				result;
+			}
+			TreeNode* currentNode = root;
+			std::stack<TreeNode*> tracker;
+
+			while( currentNode || !tracker.empty() ) {
+				while( currentNode != nullptr ) {
+					tracker.push( currentNode );
+					currentNode = currentNode->left;
+				}	
+				currentNode = tracker.top(); tracker.pop();
+				result.emplace_back( currentNode->val );
+				currentNode = currentNode->right;
+			}
+			return result;
+		}
+};
+
+class Solution {
+	using ReturnType = std::vector<int>;
+  auto inorderHelper( TreeNode* root, ReturnType& result ) const -> void {
+    if( root == nullptr ) return;
+    inorderHelper( root->left, result );
+    result.emplace_back( root->val );
+    inorderHelper( root->right, result );
+  }
+	public:
+		auto inorderTraversal( TreeNode* root ) const -> ReturnType {
+			ReturnType result {};
+			if( root == nullptr ) {
+				return result;
+			}
+			
+			inorderHelper( root, result );
+			return result;
+		}
+};
+
+class Solution {
+	using ReturnType = std::vector<int>;
+	public:
+		auto inorderTraversal( TreeNode* root ) const -> ReturnType {
+			ReturnType result {};
+			if( root == nullptr ) return result;
+            while( root != nullptr ) {
+                if( root->left == nullptr ) {
+                    result.emplace_back( root->val );
+                    root = root->right;
+                }	 
+                else {
+                    TreeNode* pre = root->left;
+                    while( pre->right!= nullptr && pre->right != root ) {
+                      pre = pre->right;
+                    }
+
+                    if( pre->right == nullptr ) {
+                        pre->right = root;
+                        root = root->left;
+                    } 
+                    else {
+                        pre->right = nullptr;	
+                        result.emplace_back( root->val );
+                        root = root->right;
+                    }
+                }
+		    }
+            return result;
+		}
+};
